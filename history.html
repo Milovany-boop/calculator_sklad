@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>История смен | Склад</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-container">
+    <header class="history-header">
+      <div class="user-info">
+        <span>👋 <span id="historyUsername"></span></span>
+        <a href="index.html" class="back-btn">← На главную</a>
+        <button id="logoutHistoryBtn" class="logout-btn">🚪 Выход</button>
+      </div>
+      <h1>📋 История смен</h1>
+      <p class="subhead">Все сохранённые смены пользователя</p>
+    </header>
+
+    <main>
+      <div class="filter-bar">
+        <label>📅 Фильтр по месяцу: </label>
+        <input type="month" id="monthFilter" value="2026-05">
+        <button id="applyFilterBtn" class="small-btn">Применить</button>
+        <button id="resetFilterBtn" class="small-btn reset">Сбросить</button>
+      </div>
+
+      <div id="shiftsList" class="shifts-list">
+        <!-- Список смен будет отрисован здесь -->
+        <div class="loading">Загрузка...</div>
+      </div>
+    </main>
+  </div>
+  <script src="history.js"></script>
+</body>
+</html>

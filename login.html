@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Вход / Регистрация | Склад</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="auth-container">
+    <div class="auth-card">
+      <h1>📦 Складская зарплата</h1>
+      <div class="tabs">
+        <button id="loginTab" class="tab active">Вход</button>
+        <button id="registerTab" class="tab">Регистрация</button>
+      </div>
+
+      <!-- Форма входа -->
+      <form id="loginForm" class="auth-form active">
+        <div class="input-group">
+          <label>👤 Логин</label>
+          <input type="text" id="loginUsername" required>
+        </div>
+        <div class="input-group">
+          <label>🔒 Пароль</label>
+          <input type="password" id="loginPassword" required>
+        </div>
+        <button type="submit" class="btn-primary">Войти</button>
+        <div class="error-message" id="loginError"></div>
+      </form>
+
+      <!-- Форма регистрации -->
+      <form id="registerForm" class="auth-form">
+        <div class="input-group">
+          <label>👤 Логин</label>
+          <input type="text" id="regUsername" required>
+        </div>
+        <div class="input-group">
+          <label>🔒 Пароль</label>
+          <input type="password" id="regPassword" required>
+        </div>
+        <div class="input-group">
+          <label>🔁 Подтвердите пароль</label>
+          <input type="password" id="regPasswordConfirm" required>
+        </div>
+        <button type="submit" class="btn-primary">Зарегистрироваться</button>
+        <div class="error-message" id="regError"></div>
+      </form>
+    </div>
+  </div>
+  <script src="auth.js"></script>
+</body>
+</html>

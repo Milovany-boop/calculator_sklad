@@ -2,32 +2,36 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes">
-  <title>Складская зарплата | Калькулятор</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Склад | Текущая смена</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="app-container">
-    <header>
+    <header class="main-header">
+      <div class="user-info">
+        <span>👋 Привет, <span id="currentUsername"></span></span>
+        <button id="logoutBtn" class="logout-btn">🚪 Выход</button>
+      </div>
       <h1>📦 Калькулятор зарплаты склада</h1>
       <p class="subhead">Секции, тарифы + оклад 45 000 ₽</p>
     </header>
 
     <main>
-      <!-- Блок с фиксированным окладом -->
+      <!-- Блок с окладом -->
       <div class="salary-base-card">
         <div class="base-info">
-          <span class="label">💰 Базовый оклад (смена)</span>
-          <span class="base-amount" id="baseSalaryDisplay">45 000 ₽</span>
+          <span class="label">💰 Базовый оклад (за смену)</span>
+          <span class="base-amount">45 000 ₽</span>
         </div>
-        <div class="hint">Оклад прибавляется автоматически</div>
+        <div class="hint">Оклад прибавляется к каждой смене автоматически</div>
       </div>
 
-      <!-- Секции 1..9 будут вставлены сюда динамически -->
+      <!-- Секции 1..9 -->
       <div class="sections-grid" id="sectionsContainer"></div>
 
-      <!-- Блок тары (доплата за тару) -->
-      <div class="container-card" id="containerCard">
+      <!-- Блок тары -->
+      <div class="container-card">
         <div class="container-header">
           <label class="checkbox-label">
             <input type="checkbox" id="containerCheckbox"> 
@@ -35,7 +39,6 @@
           </label>
           <span class="helper-text">Если нет тары — не ставьте галочку</span>
         </div>
-        
         <div id="containerControls" class="container-controls hidden">
           <div class="input-group">
             <label for="containerQty">Количество тары (шт)</label>
@@ -49,19 +52,40 @@
         </div>
       </div>
 
-      <!-- ИТОГО: оклад + секции + тара -->
+      <!-- Итог за смену и кнопки управления -->
       <div class="total-card">
         <div class="total-row">
-          <span class="total-label">ИТОГО ЗАРПЛАТА (оклад + сдельная часть + тара)</span>
-          <span class="total-amount" id="grandTotal">0 ₽</span>
+          <span class="total-label">ИТОГО ЗА ЭТУ СМЕНУ (оклад + сделка + тара)</span>
+          <span class="total-amount" id="shiftTotal">0 ₽</span>
         </div>
-        <button type="button" id="resetQuantities" class="reset-btn">🔄 Сбросить количество товара</button>
+        <div class="action-buttons">
+          <button id="saveShiftBtn" class="btn-save">💾 Сохранить смену</button>
+          <button id="newShiftBtn" class="btn-new">🔄 Новая смена (очистить)</button>
+        </div>
+      </div>
+
+      <!-- Статистика за месяц -->
+      <div class="month-stats">
+        <div class="stats-header">
+          <h3>📅 Статистика за текущий месяц</h3>
+          <a href="history.html" class="history-link">📜 Вся история →</a>
+        </div>
+        <div class="stats-card">
+          <div class="stat-item">
+            <span>💰 Заработано за месяц (все смены):</span>
+            <strong id="monthTotal">0 ₽</strong>
+          </div>
+          <div class="stat-item">
+            <span>📆 Количество смен в этом месяце:</span>
+            <strong id="monthShiftsCount">0</strong>
+          </div>
+        </div>
       </div>
     </main>
     <footer>
-      <p>⚡ Редактируйте тарифы в каждой секции — сумма пересчитается мгновенно</p>
+      <p>⚡ Редактируйте тарифы — данные смены сохранятся с текущими тарифами</p>
     </footer>
   </div>
-  <script src="script.js"></script>
+  <script src="main.js"></script>
 </body>
 </html>
